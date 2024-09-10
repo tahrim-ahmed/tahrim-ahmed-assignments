@@ -501,6 +501,8 @@
               {% assign all_products = settings.you_may_also_like_collection.products %}
   
               {% assign products_to_display = "" %}
+
+              {{ cart_product_ids }}
   
               {% for product in all_products %}
                 {% unless cart_product_ids contains product.id %}
@@ -517,7 +519,7 @@
                     role="list"
                     aria-label="{{ 'general.slider.name' | t }}"
                   >
-                    {% for product in settings.you_may_also_like_collection.products limit: settings.you_may_also_like_product_limit %}
+                    {% for product in products_to_display limit: settings.you_may_also_like_product_limit %}
                       <li
                         id="Slide-{{ section.id }}-{{ forloop.index }}"
                         class="grid__item slider__slide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
