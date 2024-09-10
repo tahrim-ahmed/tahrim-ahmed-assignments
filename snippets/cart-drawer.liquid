@@ -523,6 +523,11 @@
         {% endif %}
   
         {% if settings.show_you_may_also_like == true and cart != empty %}
+          {% assign quick_add = '' %}
+
+          {% if settings.show_quick_add == true %}
+            {% assign quick_add = 'standard' %}
+          {% endif %}
           <div class="drawer__recommendation">
             <h3 class="drawer__recommendation--heading">{{ settings.you_may_also_like_heading }}</h3>
   
@@ -563,7 +568,7 @@
                             image_shape: 'default',
                             show_secondary_image: true,
                             section_id: section.id,
-                            quick_add: settings.show_quick_add
+                            quick_add: quick_add
                           %}
                         </li>
                       {% endunless %}
