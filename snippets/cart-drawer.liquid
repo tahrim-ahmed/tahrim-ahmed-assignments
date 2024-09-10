@@ -73,7 +73,7 @@
 
       {% if settings.show_free_shipping_banner == true %}
         {% assign free_shipping_amount = settings.free_shipping_amount | abs %}
-        {% assign cart_total_amount = cart.total_price | money %}
+        {% assign cart_total_amount = cart.total_price %}
         {{ cart_total_amount }}
         {{ free_shipping_amount }}
         <div class="drawer__free-shipping">
