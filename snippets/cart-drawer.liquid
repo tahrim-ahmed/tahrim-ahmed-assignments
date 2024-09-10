@@ -501,12 +501,11 @@
               {% assign all_products = settings.you_may_also_like_collection.products %}
   
               {% assign products_to_display = "" %}
-
-              {{ cart_product_ids }}
   
               {% for product in all_products %}
                 {% unless cart_product_ids contains product.id %}
                   {% assign products_to_display = products_to_display | append: product %}
+                  {{ products_to_display.size }}
                 {% endunless %}
               {% endfor %}
               
