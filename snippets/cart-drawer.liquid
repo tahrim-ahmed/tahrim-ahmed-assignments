@@ -76,7 +76,7 @@
         {% assign cart_total_amount = cart.total_price | money_without_currency | replace: ',', '' | abs %}
         <div class="drawer__free-shipping">
           {% if cart_total_amount < free_shipping_amount %}
-            {% assign remaining_amount = free_shipping_amount | minus: cart_total_amount | times: 100 | money_with_currency %}
+            {% assign remaining_amount = free_shipping_amount | minus: cart_total_amount | times: 100 | money %}
             <div class="drawer__free-shipping--text">
               {{ settings.free_shipping_spend_more_message | replace: '#amount', remaining_amount }}
             </div>
