@@ -1500,6 +1500,11 @@
         "type": "richtext",
         "id": "review_text",
         "label": "Review text"
+      },
+      {
+        "type": "text",
+        "id": "reviewer_name",
+        "label": "Reviewer name"
       }
     ]
   }
