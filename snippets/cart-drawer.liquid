@@ -485,9 +485,11 @@
         <div class="drawer__recommendation">
           <h3 class="drawer__recommendation--heading">{{ settings.you_may_also_like_heading }}</h3>
 
-          <div class="drawer__recommendation--slider">
-            
-          </div>
+          {% if settings.you_may_also_like_collection != blank %}
+            <div class="drawer__recommendation--slider">
+              
+            </div>
+          {% endif %}
         </div>
       {% endif %}
                                   
