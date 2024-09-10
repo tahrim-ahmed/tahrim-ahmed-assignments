@@ -1518,6 +1518,12 @@
         "label": "Collection for you may also like"
       },
       {
+         "type": "text",
+        "id": "you_may_also_like_heading",
+        "label": "Heading",
+        "default": "You May Also Like"
+      },
+      {
         "type": "range",
         "id": "you_may_also_like_product_limit",
         "label": "Number of products to display",
