@@ -134,6 +134,9 @@
     "star_image": "shopify:\/\/shop_images\/5-Star-Rating-Review-Transparent-PNG_1.png",
     "review_text": "<p>I love their products!<\/p>",
     "reviewer_name": "Nick Wood",
+    "show_you_may_also_like": true,
+    "you_may_also_like_collection": "automated-collection",
+    "show_quick_add": true,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
