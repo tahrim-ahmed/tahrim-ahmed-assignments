@@ -71,7 +71,7 @@
         </button>
       </div>
 
-      {% if settings.show_free_shipping_banner == true %}
+      {% if settings.show_free_shipping_banner == true and cart != empty %}
         {% assign free_shipping_amount = settings.free_shipping_amount | abs %}
         {% assign cart_total_amount = cart.total_price | money_without_currency | replace: ',', '' | abs %}
         <div class="drawer__free-shipping">
@@ -471,7 +471,7 @@
         </form>
       </cart-drawer-items>
 
-      {% if settings.show_review %}
+      {% if settings.show_review == true and cart != empty %}
         <div class="drawer__review">
           {% if settings.star_image != blank %}
             {{ settings.star_image | image_url: width: settings.star_image.height | image_tag: loading: lazy, class: 'drawer__review--star', sizes: '500px', widths: '300,400,500' }}
