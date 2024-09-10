@@ -1463,6 +1463,22 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_free_shipping_banner",
+        "label": "Show free shipping banner",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "free_shipping_spend_more_message",
+        "label": "Free shipping spend more message"
+      },
+      {
+        "type": "textarea",
+        "id": "free_shipping_success_message",
+        "label": "Free shipping success message"
       }
     ]
   }
