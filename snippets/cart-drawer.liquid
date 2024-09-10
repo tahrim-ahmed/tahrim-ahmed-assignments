@@ -509,7 +509,7 @@
                 {% endunless %}
               {% endfor %}
               
-              <div class="drawer__recommendation--slider">
+              <div class="drawer__recommendation--slider" id="collection-{{ section.id }}" data-id="{{ section.id }}">
                 <slider-component class="slider-mobile-gutter {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
                   <ul
                     id="Slider-{{ section.id }}"
