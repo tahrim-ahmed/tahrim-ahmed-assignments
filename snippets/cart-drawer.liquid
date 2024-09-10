@@ -500,11 +500,11 @@
               {% assign cart_product_ids = cart.items | map: 'product_id' %}
               {% assign all_products = settings.you_may_also_like_collection.products %}
   
-              {% assign products_to_display = "" %}
+              {% assign products_to_display = [] %}
   
               {% for product in all_products %}
                 {% unless cart_product_ids contains product.id %}
-                  {% assign products_to_display = products_to_display | append: product %}
+                  {% assign products_to_display = products_to_display | concat: product %}
                 {% endunless %}
               {% endfor %}
               
