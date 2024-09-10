@@ -480,6 +480,12 @@
           <span class="drawer__review--reviewer">{{ settings.reviewer_name }}</span>
         </div>
       {% endif %}
+
+      {% if settings.show_you_may_also_like == true and cart != empty %}
+        <div class="drawer__recommendation">
+          
+        </div>
+      {% endif %}
                                   
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}
