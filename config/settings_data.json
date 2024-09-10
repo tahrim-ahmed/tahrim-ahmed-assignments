@@ -136,6 +136,7 @@
     "reviewer_name": "Nick Wood",
     "show_you_may_also_like": true,
     "you_may_also_like_collection": "automated-collection",
+    "you_may_also_like_product_limit": 8,
     "show_quick_add": true,
     "sections": {
       "main-password-header": {
@@ -148,6 +149,11 @@
         "type": "main-password-footer",
         "settings": {
           "color_scheme": "scheme-1"
+        }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {
         }
       }
     },
