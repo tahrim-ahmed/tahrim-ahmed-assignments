@@ -474,7 +474,7 @@
       {% if settings.show_review %}
         <div class="drawer__review">
           {% if settings.star_image != blank %}
-            {{ settings.star_image | image_url: settings.star_image.height | image_tag: class: 'drawer__revier--star', loading: lazy }}
+            {{ settings.star_image | image_url: width: settings.star_image.height | image_tag: class: 'drawer__revier--star', loading: lazy }}
           {% endif %}
         </div>
       {% endif %}
