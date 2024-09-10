@@ -11,9 +11,16 @@
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
-{% if settings.show_quick_add == true %}
-  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{% if settings.show_you_may_also_like == true %}
+  {{ 'component-card.css' | asset_url | stylesheet_tag }}
+  {{ 'component-price.css' | asset_url | stylesheet_tag }}
+  
+  {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+  {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+
+  {% if settings.show_quick_add == true %}
+    <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  {% endif %}
 {% endif %}
 
 <style>
@@ -526,7 +533,7 @@
                         image_shape: 'default',
                         show_secondary_image: true,
                         section_id: section.id,
-                        quick_add: true
+                        quick_add: settings.show_quick_add
                       %}
                     </li>
                   {% endfor %}
