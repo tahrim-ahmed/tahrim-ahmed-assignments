@@ -518,7 +518,7 @@
                     role="list"
                     aria-label="{{ 'general.slider.name' | t }}"
                   >
-                    {% for product in products_to_display limit: settings.you_may_also_like_product_limit %}
+                    {% for product in products_to_display.data limit: settings.you_may_also_like_product_limit %}
                       <li
                         id="Slide-{{ section.id }}-{{ forloop.index }}"
                         class="grid__item slider__slide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
