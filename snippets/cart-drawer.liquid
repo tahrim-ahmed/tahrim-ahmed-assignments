@@ -70,6 +70,15 @@
           {% render 'icon-close' %}
         </button>
       </div>
+
+      {% if settings.show_free_shipping_banner == true %}
+        {% assign free_shipping_amount = settings.free_shipping_amount | abs %}
+        {{ cart.total_price }}
+        <div class="drawer__free-shipping">
+          
+        </div>
+      {% endif %}
+      
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
