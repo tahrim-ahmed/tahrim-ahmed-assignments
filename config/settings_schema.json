@@ -1476,12 +1476,12 @@
         "label": "Free shipping amount"
       },
       {
-        "type": "textarea",
+        "type": "richtext",
         "id": "free_shipping_spend_more_message",
         "label": "Free shipping spend more message"
       },
       {
-        "type": "textarea",
+        "type": "richtext",
         "id": "free_shipping_success_message",
         "label": "Free shipping success message"
       }
