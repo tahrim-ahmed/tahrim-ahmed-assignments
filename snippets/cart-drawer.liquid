@@ -498,23 +498,14 @@
   
             {% if settings.you_may_also_like_collection != blank %}
               {% assign cart_product_ids = cart.items | map: 'product_id' %}
-              {% assign all_products = settings.you_may_also_like_collection.products %}
   
-              {% assign products_to_display = "" %}
+              {% assign products_to_display = settings.you_may_also_like_product_limit %}
   
-              {% for product in all_products %}
-                {% unless cart_product_ids contains product.id %}
-                  {% capture product_block %}
-                    {% if products_to_display != '' %}
-                      {% assign products_to_display = products_to_display | append: ',' %}
-                    {% endif %}
-                    {{ product | json }}
-                  {% endcapture %}
-                  {% assign products_to_display = products_to_display | append: product_block %}
-                {% endunless %}
+              {% for product in settings.you_may_also_like_collection.products limit: settings.you_may_also_like_product_limit %}
+                {% if cart_product_ids contains product.id %}
+                  {% assign products_to_display = products_to_display | plus: 1 %}
+                {% endif %}
               {% endfor %}
-              
-              {% assign products_array = products_to_display | split: ',' %}
               
               <div class="drawer__recommendation--slider" id="collection-{{ section.id }}" data-id="{{ section.id }}">
                 <slider-component class="slider-mobile-gutter {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -525,7 +516,7 @@
                     role="list"
                     aria-label="{{ 'general.slider.name' | t }}"
                   >
-                    {% for product_data in products_array limit: settings.you_may_also_like_product_limit %}
+                    {% for product_data in products_to_display limit: settings.you_may_also_like_product_limit %}
                       <li
                         id="Slide-{{ section.id }}-{{ forloop.index }}"
                         class="grid__item slider__slide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
