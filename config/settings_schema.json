@@ -1530,6 +1530,12 @@
         "min": 4,
         "max": 8,
         "default": 6
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quick_add",
+        "label": "Show quick add",
+        "default": true
       }
     ]
   }
