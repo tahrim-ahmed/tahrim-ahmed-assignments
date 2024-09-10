@@ -487,7 +487,17 @@
 
           {% if settings.you_may_also_like_collection != blank %}
             <div class="drawer__recommendation--slider">
-              
+              <slider-component class="slider-mobile-gutter {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                <ul
+                  id="Slider-{{ section.id }}"
+                  data-id="{{ section.id }}"
+                  class="grid product-grid contains-card contains-card--product contains-card--standard grid--2-col-desktop slider"
+                  role="list"
+                  aria-label="{{ 'general.slider.name' | t }}"
+                >
+                  
+                </ul>
+              </slider-component>
             </div>
           {% endif %}
         </div>
