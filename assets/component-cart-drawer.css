@@ -104,6 +104,33 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
   width: 2rem;
 }
 
+.drawer__free-shipping {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.drawer__free-shipping .drawer__free-shipping--text p {
+  margin: 0;
+  text-align: center;
+}
+
+.drawer__free-shipping .drawer__free-shipping--progress {
+  height: 8px;
+  border: 1px solid #000;
+  width: 100%;
+  border-radius: 100px;
+}
+
+.drawer__free-shipping .drawer__free-shipping--progress span {
+  display: block;
+  background: #000;
+  height: 100%;
+  border-radius: 100px;
+}
+
 .drawer__contents {
   flex-grow: 1;
   display: flex;
