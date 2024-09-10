@@ -557,6 +557,27 @@
                       {% endunless %}
                     {% endfor %}
                   </ul>
+
+                  <div class="slider-buttons">
+                    <button
+                      type="button"
+                      class="slider-button slider-button--prev"
+                      name="previous"
+                      aria-label="{{ 'general.slider.previous_slide' | t }}"
+                      aria-controls="Slider-{{ section.id }}"
+                    >
+                      {% render 'icon-caret' %}
+                    </button>
+                    <button
+                      type="button"
+                      class="slider-button slider-button--next"
+                      name="next"
+                      aria-label="{{ 'general.slider.next_slide' | t }}"
+                      aria-controls="Slider-{{ section.id }}"
+                    >
+                      {% render 'icon-caret' %}
+                    </button>
+                  </div>
                 </slider-component>
               </div>
             {% endif %}
