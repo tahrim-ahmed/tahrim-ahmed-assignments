@@ -474,7 +474,7 @@
       {% if settings.show_review %}
         <div class="drawer__review">
           {% if settings.star_image != blank %}
-            {{ settings.star_image | image_url: width: settings.star_image.height | image_tag: loading: lazy, class: 'drawer__review--star' }}
+            {{ settings.star_image | image_url: width: settings.star_image.height | image_tag: loading: lazy, class: 'drawer__review--star', sizes: '500px', widths: '300,400,500' }}
           {% endif %}
         </div>
       {% endif %}
