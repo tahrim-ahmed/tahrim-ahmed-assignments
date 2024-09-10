@@ -1505,6 +1505,25 @@
         "type": "text",
         "id": "reviewer_name",
         "label": "Reviewer name"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_you_may_also_like",
+        "label": "Show you may also like",
+        "default": false
+      },
+      {
+        "type": "collection",
+        "id": "you_may_also_like_collection",
+        "label": "Collection for you may also like"
+      },
+      {
+        "type": "range",
+        "id": "you_may_also_like_product_limit",
+        "label": "Number of products to display",
+        "min": 4,
+        "max": 8,
+        "default": 6
       }
     ]
   }
