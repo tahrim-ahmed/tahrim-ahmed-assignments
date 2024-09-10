@@ -348,6 +348,29 @@ cart-drawer-items {
   transform: rotate(180deg);
 }
 
+.drawer__review {
+  margin: 10px 0;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #000;
+}
+
+.drawer__review .drawer__review--star {
+  max-height: 40px;
+  width: 150px;
+}
+
+.drawer__review .drawer__review--text p {
+  margin: 0;
+  font-style: italic;
+}
+
+.drawer__review .drawer__review--reviewer {
+  font-weight: 600;
+}
+
 .cart-drawer .cart__checkout-button {
   max-width: none;
 }
