@@ -1471,6 +1471,11 @@
         "default": false
       },
       {
+        "type": "number",
+        "id": "free_shipping_amount",
+        "label": "Free shipping amount"
+      },
+      {
         "type": "textarea",
         "id": "free_shipping_spend_more_message",
         "label": "Free shipping spend more message"
