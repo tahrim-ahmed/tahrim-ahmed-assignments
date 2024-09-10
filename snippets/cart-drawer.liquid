@@ -507,8 +507,6 @@
                   {% assign products_to_display = products_to_display | append: product %}
                 {% endunless %}
               {% endfor %}
-
-              {{ products_to_display }}
               
               <div class="drawer__recommendation--slider" id="collection-{{ section.id }}" data-id="{{ section.id }}">
                 <slider-component class="slider-mobile-gutter {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -519,7 +517,7 @@
                     role="list"
                     aria-label="{{ 'general.slider.name' | t }}"
                   >
-                    {% for product in products_to_display limit: settings.you_may_also_like_product_limit %}
+                    {% for product_data in products_to_display limit: settings.you_may_also_like_product_limit %}
                       <li
                         id="Slide-{{ section.id }}-{{ forloop.index }}"
                         class="grid__item slider__slide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -529,7 +527,7 @@
                         {% endif %}
                       >
                         {% render 'card-product',
-                          card_product: product,
+                          card_product: product_data,
                           media_aspect_ratio: 'portrait',
                           image_shape: 'default',
                           show_secondary_image: true,
