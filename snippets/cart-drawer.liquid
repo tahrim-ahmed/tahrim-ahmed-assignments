@@ -486,6 +486,17 @@
           <h3 class="drawer__recommendation--heading">{{ settings.you_may_also_like_heading }}</h3>
 
           {% if settings.you_may_also_like_collection != blank %}
+            {% assign cart_product_ids = cart.items | map: 'product_id' %}
+            {% assign all_products = settings.you_may_also_like_collection.products %}
+
+            {% assign products_to_display = "" %}
+
+            {% for product in all_products %}
+              {% unless cart_product_ids contains product.id %}
+                {% assign products_to_display = products_to_display | append: product %}
+              {% endunless %}
+            {% endfor %}
+            
             <div class="drawer__recommendation--slider">
               <slider-component class="slider-mobile-gutter {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
                 <ul
@@ -495,7 +506,25 @@
                   role="list"
                   aria-label="{{ 'general.slider.name' | t }}"
                 >
-                  
+                  {% for product in products_to_display limit: settings.you_may_also_like_product_limit %}
+                    <li
+                      id="Slide-{{ section.id }}-{{ forloop.index }}"
+                      class="grid__item slider__slide{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                      {% if settings.animations_reveal_on_scroll %}
+                        data-cascade
+                        style="--animation-order: {{ forloop.index }};"
+                      {% endif %}
+                    >
+                      {% render 'card-product',
+                        card_product: product,
+                        media_aspect_ratio: 'portrait',
+                        image_shape: 'default',
+                        show_secondary_image: true,
+                        section_id: section.id,
+                        quick_add: true
+                      %}
+                    </li>
+                  {% endfor %}
                 </ul>
               </slider-component>
             </div>
