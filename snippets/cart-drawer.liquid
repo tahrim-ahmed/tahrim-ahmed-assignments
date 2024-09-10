@@ -83,7 +83,7 @@
               {{ settings.free_shipping_spend_more_message | replace: '#amount', remaining_amount }}
             </div>
             <div class="drawer__free-shipping--progress">
-              <span style></span>
+              <span style="width: {{ progress_percentage | append: '%' }}"></span>
             </div>
           {% else %}
           {% endif %}
