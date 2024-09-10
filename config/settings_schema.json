@@ -1484,6 +1484,22 @@
         "type": "richtext",
         "id": "free_shipping_success_message",
         "label": "Free shipping success message"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_review",
+        "label": "Show review",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "star_image",
+        "label": "Star image"
+      },
+      {
+        "type": "richtext",
+        "id": "review_text",
+        "label": "Review text"
       }
     ]
   }
