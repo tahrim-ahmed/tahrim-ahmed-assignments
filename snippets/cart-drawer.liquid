@@ -85,6 +85,9 @@
               <span style="width: {{ progress_percentage }}"></span>
             </div>
           {% else %}
+            <div class="drawer__free-shipping--text">
+              {{ settings.free_shipping_success_message }}
+            </div>
           {% endif %}
         </div>
       {% endif %}
