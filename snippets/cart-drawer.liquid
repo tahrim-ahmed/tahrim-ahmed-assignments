@@ -27,6 +27,13 @@
   .drawer {
     visibility: hidden;
   }
+
+  {% if settings.show_you_may_also_like == true %}
+    .drawer__recommendation .slider--desktop .slider__slide:first-child {
+      margin-left: 0;
+      scroll-margin-left: 0;
+    }
+  {% endif %}
 </style>
 
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
