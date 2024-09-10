@@ -505,9 +505,10 @@
               {% for product in all_products %}
                 {% unless cart_product_ids contains product.id %}
                   {% assign products_to_display = products_to_display | append: product %}
-                  {{ products_to_display[forloop.index].title }}
                 {% endunless %}
               {% endfor %}
+
+              {{ products_to_display[0].title }}
               
               <div class="drawer__recommendation--slider" id="collection-{{ section.id }}" data-id="{{ section.id }}">
                 <slider-component class="slider-mobile-gutter {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
