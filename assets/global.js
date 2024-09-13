@@ -1182,12 +1182,13 @@ class CartProductRecommendations extends HTMLElement {
   
   loadRecommendations(productId) {
     fetch(`${this.dataset.url}&product_id=${productId}&sections=${this.dataset.sectionId}`)
-      .then((response) => response.text())
-      .then((text) => {
-        const html = document.createElement('div');
-        console.log(html)
-        html.innerHTML = text;
-        const recommendations = html.querySelector('cart-product-recommendations');
+      .then((response) => response.json())
+      .then((res) => {
+        const htmlString = result["cart-drawer-recommendations"];
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlString;
+        console.log(tempDiv);
+        const recommendations = tempDiv.querySelector('cart-product-recommendations');
 
         if (recommendations?.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML;
