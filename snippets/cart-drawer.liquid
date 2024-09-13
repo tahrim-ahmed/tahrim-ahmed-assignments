@@ -544,10 +544,10 @@
                 {% endif %}
               {% endfor %}
 
-              <product-recommendations
+              <cart-product-recommendations
                 class="related-products {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 data-url="{{ routes.product_recommendations_url }}?limit={{ settings.you_may_also_like_product_limit }}"
-                data-section-id="cart-product-recommendations"
+                data-section-id="cart-drawer-recommendations"
                 data-product-id="{{ cart.items.first.product_id }}"
               >
                 {% if recommendations.performed and recommendations.products_count > 0 %}
@@ -605,7 +605,7 @@
                     </div>
                   </slider-component>
                 {% endif %}
-              </product-recommendations>
+              </cart-product-recommendations>
             {% endif %}
           </div>
         {% endif %}
@@ -716,3 +716,64 @@
     </div>
   </div>
 </cart-drawer>
+
+<script>
+  class CartProductRecommendations extends HTMLElement {
+    observer = undefined;
+  
+    constructor() {
+      super();
+    }
+  
+    connectedCallback() {
+      this.initializeRecommendations(this.dataset.productId);
+    }
+  
+    initializeRecommendations(productId) {    
+      this.observer?.unobserve(this);
+      const cartDrawer = document.querySelector('cart-drawer');
+
+      const mtObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'class') {
+            const isCartOpen = cartDrawer.classList.contains('active');
+            if (isCartOpen) {
+              this.loadRecommendations(productId);
+            }
+          }
+        });
+      });
+        
+      mtObserver.observe(cartDrawer, { attributes: true });
+    }
+  
+    loadRecommendations(productId) {
+      fetch(`${this.dataset.url}&product_id=${productId}&sections=${this.dataset.sectionId}`)
+        .then((response) => response.text())
+        .then((text) => {
+          const html = document.createElement('div');
+          html.innerHTML = text;
+          const recommendations = html.querySelector('product-recommendations');
+  
+          if (recommendations?.innerHTML.trim().length) {
+            this.innerHTML = recommendations.innerHTML;
+          }
+  
+          if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {
+            this.remove();
+          }
+  
+          console.log('data')
+  
+          if (html.querySelector('.grid__item')) {
+            this.classList.add('product-recommendations--loaded');
+          }
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }
+  }
+  
+  customElements.define('cart-product-recommendations', CartProductRecommendations);
+</script>
