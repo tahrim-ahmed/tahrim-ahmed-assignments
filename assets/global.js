@@ -1124,6 +1124,7 @@ class ProductRecommendations extends HTMLElement {
   }
 
   connectedCallback() {
+    console.log(this.dataset.productId);
     this.initializeRecommendations(this.dataset.productId);
   }
 
