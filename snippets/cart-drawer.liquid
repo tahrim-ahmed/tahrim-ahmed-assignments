@@ -730,6 +730,7 @@
     }
   
     loadRecommendations(productId) {
+      console.log(productId)
       fetch(`${this.dataset.url}&product_id=${productId}&sections=${this.dataset.sectionId}`)
         .then((response) => response.text())
         .then((text) => {
