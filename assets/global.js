@@ -1200,7 +1200,7 @@ class CartProductRecommendations extends HTMLElement {
 
         console.log('data')
 
-        if (html.querySelector('.grid__item')) {
+        if (tempDiv.querySelector('.grid__item')) {
           this.classList.add('product-recommendations--loaded');
         }
       })
