@@ -1162,7 +1162,6 @@ class ProductRecommendations extends HTMLElement {
         const html = document.createElement('div');
         html.innerHTML = text;
         const recommendations = html.querySelector('product-recommendations');
-        console.log(recommendations)
 
         if (recommendations?.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML;
@@ -1171,6 +1170,8 @@ class ProductRecommendations extends HTMLElement {
         if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {
           this.remove();
         }
+
+        console.log('data')
 
         if (html.querySelector('.grid__item')) {
           this.classList.add('product-recommendations--loaded');
