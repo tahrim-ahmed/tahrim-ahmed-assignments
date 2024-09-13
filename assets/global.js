@@ -1170,6 +1170,46 @@ class ProductRecommendations extends HTMLElement {
 
 customElements.define('product-recommendations', ProductRecommendations);
 
+class CartProductRecommendations extends HTMLElement {
+    observer = undefined;
+    
+    constructor() {
+      super();
+    }
+  
+    connectedCallback() {
+      this.loadRecommendations(productId);
+    }
+  
+    loadRecommendations(productId) {
+      console.log(productId)
+      fetch(`${this.dataset.url}&product_id=${productId}&sections=${this.dataset.sectionId}`)
+        .then((response) => response.text())
+        .then((text) => {
+          const html = document.createElement('div');
+          html.innerHTML = text;
+          const recommendations = html.querySelector('product-recommendations');
+  
+          if (recommendations?.innerHTML.trim().length) {
+            this.innerHTML = recommendations.innerHTML;
+          }
+  
+          if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {
+            this.remove();
+          }
+  
+          if (html.querySelector('.grid__item')) {
+            this.classList.add('product-recommendations--loaded');
+          }
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }
+  }
+
+  customElements.define('cart-product-recommendations', CartProductRecommendations);
+
 class AccountIcon extends HTMLElement {
   constructor() {
     super();
