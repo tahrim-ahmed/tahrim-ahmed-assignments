@@ -1124,6 +1124,7 @@ class ProductRecommendations extends HTMLElement {
   }
 
   connectedCallback() {
+    console.log(this.dataset.productId)
     this.initializeRecommendations(this.dataset.productId);
   }
 
@@ -1141,7 +1142,6 @@ class ProductRecommendations extends HTMLElement {
   }
 
   loadRecommendations(productId) {
-    console.log('id')
     fetch(`${this.dataset.url}&product_id=${productId}&section_id=${this.dataset.sectionId}`)
       .then((response) => response.text())
       .then((text) => {
