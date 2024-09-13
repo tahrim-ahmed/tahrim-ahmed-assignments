@@ -543,10 +543,6 @@
                   {% assign products_to_display = products_to_display | plus: 1 %}
                 {% endif %}
               {% endfor %}
-              
-              <div class="drawer__recommendation--slider" id="collection-{{ section.id }}" data-id="{{ section.id }}">
-                
-              </div>
 
               <product-recommendations
                 class="related-products {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
