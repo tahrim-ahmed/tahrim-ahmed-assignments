@@ -726,27 +726,7 @@
     }
   
     connectedCallback() {
-      // Initialize the element, but don't load recommendations yet
-      this.initializeRecommendations(this.dataset.productId);
-    }
-  
-    initializeRecommendations(productId) {    
-      const cartDrawer = document.querySelector('cart-drawer');
-  
-      // Watch for cart drawer class change to detect when it's opened
-      const mtObserver = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (mutation.attributeName === 'class') {
-            const isCartOpen = cartDrawer.classList.contains('active'); // 'active' or whatever class is used for showing
-            if (isCartOpen) {
-              this.loadRecommendations(productId);
-            }
-          }
-        });
-      });
-  
-      // Start observing class changes in cartDrawer
-      mtObserver.observe(cartDrawer, { attributes: true });
+      this.loadRecommendations(productId);
     }
   
     loadRecommendations(productId) {
@@ -774,9 +754,6 @@
         });
     }
   }
-  
-  // Define the custom element on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    customElements.define('cart-product-recommendations', CartProductRecommendations);
-  });
+
+  customElements.define('cart-product-recommendations', CartProductRecommendations);
 </script>
