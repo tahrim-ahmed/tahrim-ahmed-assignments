@@ -547,7 +547,7 @@
               <product-recommendations
                 class="related-products {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 data-url="{{ routes.product_recommendations_url }}?limit={{ settings.you_may_also_like_product_limit }}"
-                data-section-id="{{ section.id }}"
+                data-section-id="cart-product-recommendations"
                 data-product-id="{{ cart.items.first.product_id }}"
               >
                 {% if recommendations.performed and recommendations.products_count > 0 %}
