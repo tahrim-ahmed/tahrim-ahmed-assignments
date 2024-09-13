@@ -1172,44 +1172,44 @@ class ProductRecommendations extends HTMLElement {
 customElements.define('product-recommendations', ProductRecommendations);
 
 class CartProductRecommendations extends HTMLElement {
-    constructor() {
-      super();
-    }
+  constructor() {
+    super();
+  }
   
-    connectedCallback() {
-      this.loadRecommendations(this.dataset.productId);
-    }
+  connectedCallback() {
+    this.loadRecommendations(this.dataset.productId);
+  }
   
-    loadRecommendations(productId) {
-      fetch(`${this.dataset.url}&product_id=${productId}&sections=${this.dataset.sectionId}`)
-        .then((response) => response.text())
-        .then((text) => {
-          const html = document.createElement('div');
+  loadRecommendations(productId) {
+    fetch(`${this.dataset.url}&product_id=${productId}&sections=${this.dataset.sectionId}`)
+      .then((response) => response.text())
+      .then((text) => {
+        const html = document.createElement('div');
+        console.log(html)
+        html.innerHTML = text;
+        const recommendations = html.querySelector('cart-product-recommendations');
 
-          console.log(html)
-          
-          html.innerHTML = text;
-          const recommendations = html.querySelector('cart-product-recommendations');
-  
-          if (recommendations?.innerHTML.trim().length) {
-            this.innerHTML = recommendations.innerHTML;
-          }
-  
-          if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {
-            this.remove();
-          }
-  
-          if (html.querySelector('.grid__item')) {
-            this.classList.add('product-recommendations--loaded');
-          }
-        })
-        .catch((e) => {
-          console.error(e);
-        });
+        if (recommendations?.innerHTML.trim().length) {
+          this.innerHTML = recommendations.innerHTML;
+        }
+
+        if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {
+          this.remove();
+        }
+
+        console.log('data')
+
+        if (html.querySelector('.grid__item')) {
+          this.classList.add('product-recommendations--loaded');
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
     }
   }
 
-  customElements.define('cart-product-recommendations', CartProductRecommendations);
+customElements.define('cart-product-recommendations', CartProductRecommendations);
 
 class AccountIcon extends HTMLElement {
   constructor() {
