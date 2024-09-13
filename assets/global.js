@@ -1156,13 +1156,13 @@ class ProductRecommendations extends HTMLElement {
   }
 
   loadRecommendations(productId) {
-    console.log(`${this.dataset.url}&product_id=${productId}&section_id=${this.dataset.sectionId}`)
     fetch(`${this.dataset.url}&product_id=${productId}&section_id=${this.dataset.sectionId}`)
       .then((response) => response.text())
       .then((text) => {
         const html = document.createElement('div');
         html.innerHTML = text;
         const recommendations = html.querySelector('product-recommendations');
+        console.log(recommendations)
 
         if (recommendations?.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML;
