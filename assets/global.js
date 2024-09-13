@@ -1184,10 +1184,11 @@ class CartProductRecommendations extends HTMLElement {
         .then((response) => response.text())
         .then((text) => {
           const html = document.createElement('div');
+
+          console.log(html)
+          
           html.innerHTML = text;
           const recommendations = html.querySelector('cart-product-recommendations');
-
-          console.log(recommendations)
   
           if (recommendations?.innerHTML.trim().length) {
             this.innerHTML = recommendations.innerHTML;
