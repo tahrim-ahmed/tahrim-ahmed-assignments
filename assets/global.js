@@ -1145,7 +1145,6 @@ class ProductRecommendations extends HTMLElement {
       .then((response) => response.text())
       .then((text) => {
         const html = document.createElement('div');
-        console.log(html)
         html.innerHTML = text;
         const recommendations = html.querySelector('product-recommendations');
 
@@ -1156,8 +1155,6 @@ class ProductRecommendations extends HTMLElement {
         if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {
           this.remove();
         }
-
-        console.log('data')
 
         if (html.querySelector('.grid__item')) {
           this.classList.add('product-recommendations--loaded');
@@ -1187,7 +1184,6 @@ class CartProductRecommendations extends HTMLElement {
         const htmlString = res["cart-drawer-recommendations"];
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = htmlString;
-        console.log(tempDiv);
         const recommendations = tempDiv.querySelector('cart-product-recommendations');
 
         if (recommendations?.innerHTML.trim().length) {
@@ -1197,8 +1193,6 @@ class CartProductRecommendations extends HTMLElement {
         if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {
           this.remove();
         }
-
-        console.log('data')
 
         if (tempDiv.querySelector('.grid__item')) {
           this.classList.add('product-recommendations--loaded');
