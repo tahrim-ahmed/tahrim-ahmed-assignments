@@ -1184,6 +1184,7 @@ class CartProductRecommendations extends HTMLElement {
       fetch(`${this.dataset.url}&product_id=${productId}&sections=${this.dataset.sectionId}`)
         .then((response) => response.text())
         .then((text) => {
+          console.log(text)
           const html = document.createElement('div');
           html.innerHTML = text;
           const recommendations = html.querySelector('cart-product-recommendations');
