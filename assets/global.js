@@ -1156,7 +1156,7 @@ class ProductRecommendations extends HTMLElement {
   }
 
   loadRecommendations(productId) {
-    fetch(`${this.dataset.url}&product_id=${productId}&section_id=${this.dataset.sectionId}`)
+    fetch(`${this.dataset.url}&product_id=${productId}&section_id=template--17730735014051__related-products`)
       .then((response) => response.text())
       .then((text) => {
         const html = document.createElement('div');
