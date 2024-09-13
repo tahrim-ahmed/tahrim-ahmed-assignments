@@ -720,32 +720,24 @@
 <script>
   class CartProductRecommendations extends HTMLElement {
     observer = undefined;
-    mtObserver = undefined;
-  
+    
     constructor() {
       super();
     }
   
     connectedCallback() {
+      // Initialize the element, but don't load recommendations yet
       this.initializeRecommendations(this.dataset.productId);
     }
   
-    initializeRecommendations(productId) {
-      // Clean up any previous observers
-      this.observer?.unobserve(this);
-  
+    initializeRecommendations(productId) {    
       const cartDrawer = document.querySelector('cart-drawer');
   
-      // If cart drawer already has 'active' class, load recommendations immediately
-      if (cartDrawer.classList.contains('active')) {
-        this.loadRecommendations(productId);
-      }
-  
-      // Initialize a new MutationObserver for cart drawer class changes
-      this.mtObserver = new MutationObserver((mutations) => {
+      // Watch for cart drawer class change to detect when it's opened
+      const mtObserver = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
           if (mutation.attributeName === 'class') {
-            const isCartOpen = cartDrawer.classList.contains('active');
+            const isCartOpen = cartDrawer.classList.contains('active'); // 'active' or whatever class is used for showing
             if (isCartOpen) {
               this.loadRecommendations(productId);
             }
@@ -753,20 +745,17 @@
         });
       });
   
-      // Observe class changes on cart drawer
-      this.mtObserver.observe(cartDrawer, { attributes: true });
+      // Start observing class changes in cartDrawer
+      mtObserver.observe(cartDrawer, { attributes: true });
     }
   
     loadRecommendations(productId) {
       fetch(`${this.dataset.url}&product_id=${productId}&sections=${this.dataset.sectionId}`)
         .then((response) => response.text())
         .then((text) => {
-          console.log(text);
           const html = document.createElement('div');
           html.innerHTML = text;
-          const recommendations = html.querySelector('cart-product-recommendations');
-
-          console.log(recommendations)
+          const recommendations = html.querySelector('product-recommendations');
   
           if (recommendations?.innerHTML.trim().length) {
             this.innerHTML = recommendations.innerHTML;
@@ -776,8 +765,6 @@
             this.remove();
           }
   
-          console.log('Product recommendations loaded');
-  
           if (html.querySelector('.grid__item')) {
             this.classList.add('product-recommendations--loaded');
           }
@@ -786,12 +773,10 @@
           console.error(e);
         });
     }
-  
-    disconnectedCallback() {
-      // Clean up the observer on disconnect
-      this.mtObserver?.disconnect();
-    }
   }
   
-  customElements.define('cart-product-recommendations', CartProductRecommendations);
+  // Define the custom element on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    customElements.define('cart-product-recommendations', CartProductRecommendations);
+  });
 </script>
