@@ -1171,14 +1171,12 @@ class ProductRecommendations extends HTMLElement {
 customElements.define('product-recommendations', ProductRecommendations);
 
 class CartProductRecommendations extends HTMLElement {
-    observer = undefined;
-    
     constructor() {
       super();
     }
   
     connectedCallback() {
-      this.loadRecommendations(productId);
+      this.loadRecommendations(this.dataset.productId);
     }
   
     loadRecommendations(productId) {
