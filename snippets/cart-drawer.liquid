@@ -720,6 +720,7 @@
 <script>
   class CartProductRecommendations extends HTMLElement {
     observer = undefined;
+    mtObserver = undefined;
   
     constructor() {
       super();
@@ -729,11 +730,19 @@
       this.initializeRecommendations(this.dataset.productId);
     }
   
-    initializeRecommendations(productId) {    
+    initializeRecommendations(productId) {
+      // Clean up any previous observers
       this.observer?.unobserve(this);
+  
       const cartDrawer = document.querySelector('cart-drawer');
-
-      const mtObserver = new MutationObserver((mutations) => {
+  
+      // If cart drawer already has 'active' class, load recommendations immediately
+      if (cartDrawer.classList.contains('active')) {
+        this.loadRecommendations(productId);
+      }
+  
+      // Initialize a new MutationObserver for cart drawer class changes
+      this.mtObserver = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
           if (mutation.attributeName === 'class') {
             const isCartOpen = cartDrawer.classList.contains('active');
@@ -743,8 +752,9 @@
           }
         });
       });
-        
-      mtObserver.observe(cartDrawer, { attributes: true });
+  
+      // Observe class changes on cart drawer
+      this.mtObserver.observe(cartDrawer, { attributes: true });
     }
   
     loadRecommendations(productId) {
@@ -763,7 +773,7 @@
             this.remove();
           }
   
-          console.log('data')
+          console.log('Product recommendations loaded');
   
           if (html.querySelector('.grid__item')) {
             this.classList.add('product-recommendations--loaded');
@@ -772,6 +782,11 @@
         .catch((e) => {
           console.error(e);
         });
+    }
+  
+    disconnectedCallback() {
+      // Clean up the observer on disconnect
+      this.mtObserver?.disconnect();
     }
   }
   
