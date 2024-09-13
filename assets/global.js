@@ -1127,22 +1127,7 @@ class ProductRecommendations extends HTMLElement {
     this.initializeRecommendations(this.dataset.productId);
   }
 
-  initializeRecommendations(productId) {
-    const cartDrawer = document.querySelector('cart-drawer');
-
-    const mtObserver = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-          const isCartOpen = cartDrawer.classList.contains('active');
-          if (isCartOpen) {
-            this.loadRecommendations(productId);
-          }
-        }
-      });
-    });
-    
-    mtObserver.observe(cartDrawer, { attributes: true });
-    
+  initializeRecommendations(productId) {    
     this.observer?.unobserve(this);
     this.observer = new IntersectionObserver(
       (entries, observer) => {
@@ -1156,7 +1141,6 @@ class ProductRecommendations extends HTMLElement {
   }
 
   loadRecommendations(productId) {
-    console.log(`${this.dataset.url}&product_id=${productId}&section_id=${this.dataset.sectionId}`)
     fetch(`${this.dataset.url}&product_id=${productId}&section_id=${this.dataset.sectionId}`)
       .then((response) => response.text())
       .then((text) => {
