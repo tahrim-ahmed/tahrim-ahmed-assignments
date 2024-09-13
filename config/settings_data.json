@@ -128,7 +128,7 @@
     "cart_color_scheme": "scheme-1",
     "show_free_shipping_banner": true,
     "free_shipping_amount": 10000,
-    "free_shipping_spend_more_message": "<p>Spend #amount more and receive <strong>Free Shipping<\/strong>!<\/p>",
+    "free_shipping_spend_more_message": "<p>✅ Spend #amount more and receive <strong>Free Shipping<\/strong>!<\/p>",
     "free_shipping_success_message": "<p>Congrats! You are eligible for <strong>Free Shipping<\/strong>!<\/p>",
     "show_review": true,
     "star_image": "shopify:\/\/shop_images\/5-Star-Rating-Review-Transparent-PNG_1.png",
