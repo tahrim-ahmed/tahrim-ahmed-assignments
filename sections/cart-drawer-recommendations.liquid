@@ -1,5 +1,5 @@
 <div id="cart-product-recommendations">
-  <product-recommendations
+  <cart-product-recommendations
     class="related-products {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     data-url="{{ routes.product_recommendations_url }}?limit={{ settings.you_may_also_like_product_limit }}"
     data-section-id="{{ section.id }}"
@@ -61,5 +61,5 @@
         </div>
       </slider-component>
     {% endif %}
-  </product-recommendations>
+  </cart-product-recommendations>
 </div>
