@@ -1184,7 +1184,7 @@ class CartProductRecommendations extends HTMLElement {
     fetch(`${this.dataset.url}&product_id=${productId}&sections=${this.dataset.sectionId}`)
       .then((response) => response.json())
       .then((res) => {
-        const htmlString = result["cart-drawer-recommendations"];
+        const htmlString = res["cart-drawer-recommendations"];
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = htmlString;
         console.log(tempDiv);
