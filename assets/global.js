@@ -1134,7 +1134,6 @@ class ProductRecommendations extends HTMLElement {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'class') {
           const isCartOpen = cartDrawer.classList.contains('active');
-          console.log(isCartOpen)
           if (isCartOpen) {
             this.loadRecommendations(productId);
           }
