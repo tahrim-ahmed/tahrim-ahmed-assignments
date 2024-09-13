@@ -716,3 +716,20 @@
     </div>
   </div>
 </cart-drawer>
+
+<script>
+  document.addEventListener('cart:open', function() {
+    const recommendationsSection = document.querySelector('product-recommendations');
+    if (recommendationsSection) {
+      const url = recommendationsSection.getAttribute('data-url');
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const newRecommendations = doc.querySelector('product-recommendations');
+          recommendationsSection.innerHTML = newRecommendations.innerHTML;
+        });
+    }
+  });
+</script>
