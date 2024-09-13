@@ -1131,9 +1131,9 @@ class ProductRecommendations extends HTMLElement {
     this.observer?.unobserve(this);
     this.observer = new IntersectionObserver(
       (entries, observer) => {
+        console.log(productId)
         if (!entries[0].isIntersecting) return;
         observer.unobserve(this);
-        console.log(productId)
         this.loadRecommendations(productId);
       },
       { rootMargin: '0px 0px 400px 0px' }
