@@ -1128,6 +1128,22 @@ class ProductRecommendations extends HTMLElement {
   }
 
   initializeRecommendations(productId) {
+    const cartDrawer = document.querySelector('cart-drawer');
+
+    const mtObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          const isCartOpen = cartDrawer.classList.contains('active');
+          console.log(isCartOpen)
+          if (isCartOpen) {
+            this.loadRecommendations(productId);
+          }
+        }
+      });
+    });
+    
+    mtObserver.observe(cartDrawer, { attributes: true });
+    
     this.observer?.unobserve(this);
     this.observer = new IntersectionObserver(
       (entries, observer) => {
