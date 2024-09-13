@@ -719,6 +719,7 @@
 
 <script>
   document.addEventListener('cart:open', function() {
+    console.log('open')
     const recommendationsSection = document.querySelector('product-recommendations');
     if (recommendationsSection) {
       const url = recommendationsSection.getAttribute('data-url');
