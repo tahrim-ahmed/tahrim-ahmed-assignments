@@ -1124,11 +1124,11 @@ class ProductRecommendations extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log(this.dataset.productId)
     this.initializeRecommendations(this.dataset.productId);
   }
 
   initializeRecommendations(productId) {
+    console.log(productId)
     this.observer?.unobserve(this);
     this.observer = new IntersectionObserver(
       (entries, observer) => {
